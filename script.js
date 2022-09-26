@@ -47,10 +47,10 @@ function weatherFetch({ cityName, state, lat, long }) {
         .text("Temperature: " + Math.round(locData2.main.temp) + "°F");
       var humidityEl = $("<h4>")
         .addClass("card-text")
-        .text("Humidity: " + locData2.main.humidity);
+        .text("Humidity: " + locData2.main.humidity + "%");
       var windSpeedEl = $("<h4>")
         .addClass("card-text")
-        .text("Wind Speed: " + locData2.wind.speed);
+        .text("Wind Speed: " + locData2.wind.speed + " mph");
       var weatherCondEl = $("<h4>")
         .addClass("card-text")
         .text(
