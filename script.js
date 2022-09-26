@@ -7,7 +7,7 @@ function apiCall(city) {
   var apiUrl =
     "http://api.openweathermap.org/geo/1.0/direct?q=" +
     city +
-    "&limit=4&appid=" +
+    "&limit=3&appid=" +
     apiKey;
   fetch(apiUrl).then(function (locWeather) {
     return locWeather.json().then(function (locData) {
@@ -44,11 +44,20 @@ function weatherFetch({ cityName, state, lat, long }) {
         .text(cityName + ", " + state);
       var tempEl = $("<h4>")
         .addClass("card-text")
+        .text("Temperature: " + Math.round(locData2.main.temp) + "°F");
+      var humidityEl = $("<h4>")
+        .addClass("card-text")
+        .text("Humidity: " + locData2.main.humidity);
+      var windSpeedEl = $("<h4>")
+        .addClass("card-text")
+        .text("Wind Speed: " + locData2.wind.speed);
+      var weatherCondEl = $("<h4>")
+        .addClass("card-text")
         .text(
-          "Temperature: " +
-            Math.round(locData2.main.temp) +
-            String.fromCharCode(176) +
-            "F"
+          "Weather Conditions: " +
+            locData2.weather[0].main +
+            " , " +
+            locData2.weather[0].description
         );
       var iconEl = $("<img>").attr(
         "src",
@@ -57,7 +66,10 @@ function weatherFetch({ cityName, state, lat, long }) {
       $("#resultsDisplay").append(
         card.append(
           cardBody.append(cardHeader.append(cardTitle.append(iconEl))),
-          tempEl
+          tempEl,
+          humidityEl,
+          weatherCondEl,
+          windSpeedEl
         )
       );
     });

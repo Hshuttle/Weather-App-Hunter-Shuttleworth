@@ -1,6 +1,20 @@
+header {
+  color: coral;
+  text-align: center;
+  border-style: solid;
+  background-image: url(./external/skies.jpg);
+  background-size: cover;
+}
+
+body {
+  background-image: url(./external/download.jpg);
+  background-size: cover;
+}
+
 #searchbox {
   border-style: solid;
-  background-color: beige;
-  border-radius: 5px;
+  background-color: lightcyan;
+  border-radius: 10px;
   padding: 20px;
+  margin: 30px 10px 30px 15px;
 }
